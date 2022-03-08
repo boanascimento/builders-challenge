@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, AppRoot } from './styles'
+import WeatherInfo from '../../components/local/weatherInfo'
+import { Container, AppRoot, BgImg } from './styles'
 
 export enum HomePageIds {
   ourSolution = 'ourSolution',
@@ -10,6 +11,8 @@ export const HomePage: React.FC<any> = (): JSX.Element => {
   return (
     <Container>
       <AppRoot />
+      <BgImg />
+      <WeatherInfo data={'test'} />
     </Container>
   )
 }
