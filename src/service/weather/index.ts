@@ -1,12 +1,21 @@
 import axios, { AxiosPromise } from 'axios'
+import { store } from '../../store'
+import { IGetWeatherInfoResponse } from './types'
 
 /**
- * Gets a Github User by login name.
- * @param userName User name to get.
+ * The weather informations according the givin latitude and longitude.
  * @returns AxiosPromise<any>
  */
-export const getGitUser = (
-  userName: string,
-): AxiosPromise<any> => {
-  return axios.get(`https://api.github.com/users/${userName}`)
+export const getWeatherInfo = (
+  latitude: number,
+  longitude: number,
+): AxiosPromise<IGetWeatherInfoResponse> => {
+  const weatherApi = store.getState().RemoteConfigReducer.apiHosts?.weatherApi
+  const openWeatherMapApiKey =
+    store.getState().RemoteConfigReducer.openWeatherMapApiKey
+  console.log('🚀  Bonny ~ openWeatherMapApiKey', openWeatherMapApiKey)
+
+  return axios.get(
+    `${weatherApi}?lat=${latitude}&lon=${longitude}&appid=${openWeatherMapApiKey}`,
+  )
 }
