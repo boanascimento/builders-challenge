@@ -12,7 +12,7 @@ export const HomePage: React.FC<any> = (): JSX.Element => {
     <Container>
       <AppRoot />
       <BgImg />
-      <WeatherInfo data={'test'} />
+      <WeatherInfo />
     </Container>
   )
 }
